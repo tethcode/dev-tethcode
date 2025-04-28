@@ -132,7 +132,9 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+# The absolute filesystem path to the directory where media files will be stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
