@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^i6r5zb&5@#n3s+7f_8kn8i*hib*4^jam+rd*$f3^nkv+v2c^5'
-
+SECRET_KEY = os.getenv.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -35,8 +34,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465  # Use SSL
 EMAIL_USE_SSL = True  # Enable SSL
 EMAIL_USE_TLS = False  # Disable TLS (since we're using SSL)
-EMAIL_HOST_USER = "tethcode@gmail.com"
-EMAIL_HOST_PASSWORD = "ivho sasz cdzs qzqb"
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set default sender email
 
 # Application definition
